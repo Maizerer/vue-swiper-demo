@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <swiper
-        :options="swiperOptions"
         :slidesPerView="1"
         :spaceBetween="30"
         :breakpoints="swiperBreakPoints"
