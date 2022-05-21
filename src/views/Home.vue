@@ -10,12 +10,16 @@
         :navigation="true"
         :modules="modules"
         class="mySwiper"
+        @swiper="onSwiper"
     >
       <swiper-slide v-for="(slide, index) in slides">
         <img :src="slide.url" alt="">
       </swiper-slide>
     </swiper>
-
+    <div class="custom-buttons">
+      <button @click="swiper.slidePrev()" class="btn">Назад</button>
+      <button @click="swiper.slideNext()" class="btn">Вперед</button>
+    </div>
   </div>
 </template>
 
@@ -43,6 +47,7 @@ export default {
   },
   data(){
     return {
+      swiper: null,
       slides: [],
       swiperBreakPoints: {
         '640': {
@@ -62,6 +67,11 @@ export default {
   },
   async created(){
     this.slides = await (await this.axios.get('https://jsonplaceholder.typicode.com/photos?_limit=20')).data
+  },
+  methods: {
+    onSwiper(swiper) {
+      this.swiper = swiper;
+    },
   }
 }
 </script>
@@ -90,5 +100,7 @@ export default {
   border: none;
   padding: 10px 30px;
   border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 </style>
