@@ -16,10 +16,7 @@
         <img :src="slide.url" alt="">
       </swiper-slide>
     </swiper>
-    <div class="custom-buttons">
-      <button @click class="btn prev-btn">Назад</button>
-      <button class="btn next-btn">Вперед</button>
-    </div>
+
   </div>
 </template>
 
